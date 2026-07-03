@@ -27,7 +27,7 @@ const recentPosts = (await getLocalePostSummaries(lang)).slice(0, 3);
         <div class="space-y-6 p-8 sm:p-10 lg:p-12">
           <span class="pill">{t('homeEyebrow')}</span>
           <h1 class="max-w-2xl text-5xl leading-[0.92] sm:text-6xl lg:text-7xl">
-            Naomi builds <span class="text-[color:var(--accent)]">bilingual</span> front-end experiences with personality.
+            {t('homeHeadingBefore')} <span class="text-[color:var(--accent)]">{t('homeHeadingHighlight')}</span> {t('homeHeadingAfter')}
           </h1>
           <p class="max-w-2xl text-lg leading-8 text-[color:var(--text-muted)]">{t('homeIntro')}</p>
           <div class="flex flex-wrap gap-3">
@@ -62,7 +62,7 @@ const recentPosts = (await getLocalePostSummaries(lang)).slice(0, 3);
       <div class="flex flex-wrap items-end justify-between gap-4">
         <div class="space-y-2">
           <span class="pill">{t('recentPosts')}</span>
-          <h2 class="text-3xl sm:text-4xl">Sharp articles, clean delivery.</h2>
+          <h2 class="text-3xl sm:text-4xl">{t('homeRecentHeading')}</h2>
         </div>
         <a href={getRelativeLocaleUrl(lang, 'blog')} class="rich-link text-sm font-bold uppercase tracking-[0.16em]">
           {t('readMore')}

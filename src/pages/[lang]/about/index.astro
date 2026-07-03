@@ -24,24 +24,24 @@ const recentPosts = (await getLocalePostSummaries(lang)).slice(0, 3);
     <header class="surface glow-card rounded-[2rem] p-8 sm:p-10 lg:p-12">
       <div class="max-w-3xl space-y-5">
         <span class="pill">{t('navAbout')}</span>
-        <h1 class="text-5xl leading-[0.95] sm:text-6xl">A tiny bio with a strong front-end bias.</h1>
+        <h1 class="text-5xl leading-[0.95] sm:text-6xl">{t('aboutHeading')}</h1>
         <p class="max-w-2xl text-lg leading-8 text-[color:var(--text-muted)]">{t('aboutIntro')}</p>
       </div>
     </header>
 
     <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
       <article class="surface rounded-[1.75rem] p-7 sm:p-8">
-        <h2 class="text-3xl">Skills</h2>
+        <h2 class="text-3xl">{t('aboutSkills')}</h2>
         <ul class="mt-5 grid gap-3 text-sm leading-7 text-[color:var(--text-muted)] sm:grid-cols-2">
-          <li>Astro, MDX, i18n routing, and static-first architecture</li>
-          <li>React islands with strong separation of concerns</li>
-          <li>Design systems, UI polish, and expressive layout work</li>
-          <li>TypeScript strict mode, content collections, and CI hygiene</li>
+          <li>{t('aboutSkill1')}</li>
+          <li>{t('aboutSkill2')}</li>
+          <li>{t('aboutSkill3')}</li>
+          <li>{t('aboutSkill4')}</li>
         </ul>
       </article>
 
       <article class="surface rounded-[1.75rem] p-7 sm:p-8">
-        <h2 class="text-3xl">Links</h2>
+        <h2 class="text-3xl">{t('aboutLinks')}</h2>
         <div class="mt-5 grid gap-4">
           <a
             href="https://github.com/Morialkar"
