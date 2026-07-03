@@ -1,0 +1,76 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { locales, type Locale, useTranslations } from '../../i18n/ui';
+import { getLocalePostSummaries } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = useTranslations(lang);
+const recentPosts = (await getLocalePostSummaries(lang)).slice(0, 3);
+---
+
+<SiteLayout
+  lang={lang}
+  title={`Naomi · ${t('homeEyebrow')}`}
+  description={t('homeIntro')}
+  pathname={Astro.url.pathname}
+  recentPosts={recentPosts}
+>
+  <section class="grid gap-8">
+    <div class="surface glow-card overflow-hidden rounded-[2rem]">
+      <div class="grid items-stretch gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="space-y-6 p-8 sm:p-10 lg:p-12">
+          <span class="pill">{t('homeEyebrow')}</span>
+          <h1 class="max-w-2xl text-5xl leading-[0.92] sm:text-6xl lg:text-7xl">
+            Naomi builds <span class="text-[color:var(--accent)]">bilingual</span> front-end experiences with personality.
+          </h1>
+          <p class="max-w-2xl text-lg leading-8 text-[color:var(--text-muted)]">{t('homeIntro')}</p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href={getRelativeLocaleUrl(lang, 'blog')}
+              class="inline-flex items-center justify-center rounded-full bg-[color:var(--accent)] px-5 py-3 text-sm font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[color:var(--accent-bright)]"
+            >
+              {t('navBlog')}
+            </a>
+            <a
+              href={getRelativeLocaleUrl(lang, 'about')}
+              class="inline-flex items-center justify-center rounded-full border border-[color:var(--border)] bg-white px-5 py-3 text-sm font-bold uppercase tracking-[0.14em] text-[color:var(--text)] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+            >
+              {t('navAbout')}
+            </a>
+          </div>
+        </div>
+
+        <div class="relative min-h-[24rem] overflow-hidden bg-[linear-gradient(160deg,#fff0f7_0%,#ffd6ec_48%,#e6007e_100%)] p-6 lg:p-8">
+          <img src="/images/hero-home.svg" alt="" class="h-full w-full rounded-[1.6rem] object-cover shadow-[0_20px_50px_rgba(42,10,46,0.16)]" />
+          <div class="absolute bottom-8 left-8 max-w-[16rem] rounded-[1.5rem] bg-white/82 p-4 backdrop-blur">
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">{t('authorName')}</p>
+            <p class="mt-2 text-sm leading-6 text-[color:var(--text-muted)]">
+              TODO: replace this hero copy with the exact tagline after the owner confirms the final positioning.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="grid gap-5">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div class="space-y-2">
+          <span class="pill">{t('recentPosts')}</span>
+          <h2 class="text-3xl sm:text-4xl">Sharp articles, clean delivery.</h2>
+        </div>
+        <a href={getRelativeLocaleUrl(lang, 'blog')} class="rich-link text-sm font-bold uppercase tracking-[0.16em]">
+          {t('readMore')}
+        </a>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-2">
+        {recentPosts.map((post) => <PostCard summary={post} />)}
+      </div>
+    </section>
+  </section>
+</SiteLayout>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 840" role="img" aria-label="Home hero illustration">
+  <defs>
+    <linearGradient id="homeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0F7" />
+      <stop offset="50%" stop-color="#FFD6EC" />
+      <stop offset="100%" stop-color="#E6007E" />
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="840" rx="56" fill="url(#homeBg)" />
+  <circle cx="1110" cy="170" r="220" fill="#FF3DA5" opacity="0.16" />
+  <circle cx="250" cy="650" r="250" fill="#fff" opacity="0.14" />
+  <rect x="96" y="100" width="1208" height="640" rx="42" fill="#fff" opacity="0.78" />
+  <path d="M204 572 390 264l158 184 130-124 248 248" fill="none" stroke="#E6007E" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="840" y="266" width="300" height="58" rx="29" fill="#2A0A2E" opacity="0.9" />
+  <rect x="840" y="350" width="260" height="36" rx="18" fill="#FF3DA5" opacity="0.92" />
+  <rect x="840" y="406" width="206" height="36" rx="18" fill="#FFD6EC" opacity="0.92" />
+</svg>

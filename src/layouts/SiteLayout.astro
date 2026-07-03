@@ -1,0 +1,67 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import '@fontsource-variable/plus-jakarta-sans';
+import '@fontsource/fraunces';
+import '@fontsource/jetbrains-mono';
+import Sidebar from '../components/Sidebar.astro';
+import { locales, type Locale, useTranslations } from '../i18n/ui';
+import { normalizeLocalePath } from '../i18n/utils';
+
+type Props = {
+  lang: Locale;
+  title: string;
+  description: string;
+  pathname: string;
+  recentPosts: {
+    href: string;
+    title: string;
+    dateLabel: string;
+    category: string;
+    heroImage?: string;
+  }[];
+};
+
+const { lang, title, description, pathname, recentPosts } = Astro.props as Props;
+const t = useTranslations(lang);
+const pathWithoutLocale = normalizeLocalePath(pathname);
+const currentPath = pathWithoutLocale ? pathWithoutLocale : '';
+const site = Astro.site ?? new URL('https://blog.morialkar.com');
+const canonicalPath = new URL(getRelativeLocaleUrl(lang, currentPath), site).href;
+const alternates = locales.map((locale) => ({
+  locale,
+  href: new URL(getRelativeLocaleUrl(locale, currentPath), site).href,
+}));
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#E6007E" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalPath} />
+    {alternates.map((item) => <link rel="alternate" hreflang={item.locale} href={item.href} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL(getRelativeLocaleUrl('fr', ''), site).href} />
+    <title>{title}</title>
+  </head>
+  <body class="relative overflow-x-hidden">
+    <Sidebar lang={lang} pathname={pathname} recentPosts={recentPosts} />
+
+    <main class="relative min-h-screen lg:pl-[var(--sidebar-width)]">
+      <div class="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 pb-16 pt-4 sm:px-6 lg:px-8 lg:pb-20 lg:pt-8">
+        <slot />
+
+        <footer class="mt-auto pt-12">
+          <div class="surface glow-card flex flex-col gap-3 rounded-[1.5rem] px-6 py-5 text-sm text-[color:var(--text-muted)] sm:flex-row sm:items-center sm:justify-between">
+            <p>© {new Date().getFullYear()} Naomi · {t('footer')}</p>
+            <p class="flex items-center gap-2">
+              <span class="pill">Astro</span>
+              <span class="pill">FR / EN</span>
+            </p>
+          </div>
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>

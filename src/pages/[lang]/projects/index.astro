@@ -1,0 +1,62 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import { locales, type Locale, useTranslations } from '../../../i18n/ui';
+import { getLocalePostSummaries } from '../../../lib/posts';
+
+export async function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = useTranslations(lang);
+const recentPosts = (await getLocalePostSummaries(lang)).slice(0, 3);
+---
+
+<SiteLayout
+  lang={lang}
+  title={`Naomi · ${t('navProjects')}`}
+  description={t('projectsIntro')}
+  pathname={Astro.url.pathname}
+  recentPosts={recentPosts}
+>
+  <section class="grid gap-8">
+    <header class="surface glow-card rounded-[2rem] p-8 sm:p-10 lg:p-12">
+      <div class="max-w-3xl space-y-5">
+        <span class="pill">{t('navProjects')}</span>
+        <h1 class="text-5xl leading-[0.95] sm:text-6xl">Selected concepts and client-ready placeholders.</h1>
+        <p class="max-w-2xl text-lg leading-8 text-[color:var(--text-muted)]">{t('projectsIntro')}</p>
+      </div>
+    </header>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+      <ProjectCard
+        status="UI concept"
+        title="Magenta Commerce"
+        description="A punchy marketing storefront concept with editorial storytelling, high-contrast CTAs, and a static-friendly product grid."
+        tags={["Astro", "Commerce", "Design system"]}
+      />
+      <ProjectCard
+        status="Portfolio"
+        title="Creative notes"
+        description="A content-driven portfolio shell that blends case studies, writing, and a strong visual identity in one static build."
+        tags={["MDX", "Content", "Accessibility"]}
+      />
+      <ProjectCard
+        status="TODO"
+        title="Future collaboration"
+        description="Placeholder slot for the next real client or personal project. Replace this card once a case study is ready."
+        tags={["TODO", "Case study", "Bilingual"]}
+      />
+    </div>
+
+    <a
+      href={getRelativeLocaleUrl(lang, 'about')}
+      class="surface glow-card flex items-center justify-between rounded-[1.5rem] px-6 py-5 font-semibold text-[color:var(--text)] transition hover:-translate-y-0.5 hover:text-[color:var(--accent)]"
+    >
+      <span>{t('navAbout')}</span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </section>
+</SiteLayout>

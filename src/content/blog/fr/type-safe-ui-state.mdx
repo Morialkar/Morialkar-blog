@@ -1,0 +1,51 @@
+---
+title: "TypeScript : éliminer les états impossibles"
+description: "Un petit pattern à garder dans sa boîte à outils : les unions discriminées pour rendre un composant React ou Astro beaucoup plus robuste."
+pubDate: 2026-05-22
+updatedDate: 2026-06-05
+heroImage: "/images/posts/type-safe-ts.svg"
+category: "TypeScript"
+tags: ["TypeScript", "React", "State", "DX"]
+draft: false
+---
+
+Quand une interface a plusieurs états, le piège classique consiste à gérer des booléens indépendants : `loading`, `error`, `success`, etc. Le résultat est souvent ambigu, avec des combinaisons impossibles à tester proprement.
+
+Une union discriminée élimine ce problème en rendant chaque état explicite.
+
+## 1. Définir le modèle
+
+```ts title="src/lib/load-state.ts" {1,3-4}
+export type LoadState<T> =
+  | { status: 'idle' }
+  | { status: 'loading' }
+  | { status: 'success'; data: T }
+  | { status: 'error'; message: string };
+```
+
+Le compilateur devient alors un allié : si j’ajoute un nouvel état, tous les `switch` qui l’utilisent doivent être mis à jour. Plus de branches oubliées.
+
+## 2. Consommer l’état sans ambiguïté
+
+```tsx title="src/components/AsyncBadge.tsx" {1,3-4}
+switch (state.status) {
+  case 'loading':
+    return <span>Chargement…</span>;
+  case 'error':
+    return <span role="alert">{state.message}</span>;
+  case 'success':
+    return <span>{state.data.title}</span>;
+  default:
+    return null;
+}
+```
+
+Ce pattern se marie très bien avec les React islands d’un site Astro : un petit composant interactif, mais avec une logique métier très stricte et facile à relire.
+
+## 3. Contrôler la qualité à la compilation
+
+```bash
+npm run lint
+```
+
+Le bonus de cette approche, c’est que l’éditeur et la CI voient la même vérité. Si un état manque ou si une branche n’est pas couverte, l’erreur remonte avant le déploiement.

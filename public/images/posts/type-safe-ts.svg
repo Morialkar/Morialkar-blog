@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Magenta abstract TypeScript illustration">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF7FB" />
+      <stop offset="55%" stop-color="#FFD6EC" />
+      <stop offset="100%" stop-color="#7A0F5B" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg2)" />
+  <rect x="84" y="84" width="1032" height="462" rx="42" fill="#fff" opacity="0.85" />
+  <rect x="118" y="118" width="322" height="398" rx="28" fill="#2A0A2E" />
+  <rect x="476" y="118" width="602" height="108" rx="28" fill="#FFF0F7" />
+  <rect x="476" y="250" width="602" height="110" rx="28" fill="#FFE7F2" />
+  <rect x="476" y="384" width="602" height="132" rx="28" fill="#FFD6EC" />
+  <circle cx="278" cy="242" r="76" fill="#E6007E" />
+  <path d="M240 238h76M278 200v76" stroke="#fff" stroke-width="18" stroke-linecap="round" />
+  <path d="M524 160h250M524 196h176M524 294h224M524 330h144M524 434h284M524 470h190" stroke="#2A0A2E" stroke-opacity=".45" stroke-width="10" stroke-linecap="round" />
+  <circle cx="1012" cy="164" r="26" fill="#FF3DA5" />
+  <circle cx="1012" cy="296" r="26" fill="#E6007E" />
+  <circle cx="1012" cy="428" r="26" fill="#7A0F5B" />
+</svg>

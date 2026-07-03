@@ -1,0 +1,86 @@
+---
+import '@fontsource-variable/plus-jakarta-sans';
+import '@fontsource/fraunces';
+import '../styles/global.css';
+import { ui } from '../i18n/ui';
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{ui.fr.notFoundTitle}</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at top left, rgba(255, 61, 165, 0.22), transparent 25%),
+          linear-gradient(180deg, #fff0f7 0%, #ffd6ec 100%);
+        color: #2a0a2e;
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      }
+      main {
+        width: min(92vw, 40rem);
+        border-radius: 2rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(42, 10, 46, 0.12);
+        box-shadow: 0 24px 60px rgba(42, 10, 46, 0.12);
+      }
+      h1 {
+        margin: 0;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        line-height: 0.95;
+      }
+      p {
+        color: #6f4a71;
+        line-height: 1.8;
+      }
+      a {
+        color: #e6007e;
+        font-weight: 700;
+      }
+      .actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        padding: 0.9rem 1.2rem;
+        text-decoration: none;
+      }
+      .button.primary {
+        background: #e6007e;
+        color: white;
+      }
+      .button.secondary {
+        border: 1px solid rgba(42, 10, 46, 0.12);
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span class="pill">404</span>
+      <h1>{ui.fr.notFoundTitle}</h1>
+      <p>{ui.fr.notFoundText}</p>
+      <div class="actions">
+        <a class="button primary" href="/fr/">Accueil</a>
+        <a class="button secondary" href="/en/">Home</a>
+      </div>
+    </main>
+  </body>
+</html>

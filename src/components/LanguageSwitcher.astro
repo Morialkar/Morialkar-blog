@@ -1,0 +1,19 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { locales, type Locale } from '../i18n/ui';
+import { normalizeLocalePath } from '../i18n/utils';
+
+const { lang, pathname } = Astro.props as { lang: Locale; pathname: string };
+const alternate = locales.find((locale) => locale !== lang) ?? lang;
+const localizedPath = normalizeLocalePath(pathname);
+const alternateHref = getRelativeLocaleUrl(alternate, localizedPath);
+---
+
+<a
+  href={alternateHref}
+  class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white/20"
+  aria-label={lang === 'fr' ? 'Switch to English' : 'Passer au français'}
+>
+  <span class="inline-flex h-2.5 w-2.5 rounded-full bg-[#FFD6EC]"></span>
+  {alternate.toUpperCase()}
+</a>

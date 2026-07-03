@@ -1,0 +1,72 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { locales, type Locale, useTranslations } from '../../../i18n/ui';
+import { getLocalePostSummaries } from '../../../lib/posts';
+
+export async function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = useTranslations(lang);
+const recentPosts = (await getLocalePostSummaries(lang)).slice(0, 3);
+---
+
+<SiteLayout
+  lang={lang}
+  title={`Naomi · ${t('navAbout')}`}
+  description={t('aboutIntro')}
+  pathname={Astro.url.pathname}
+  recentPosts={recentPosts}
+>
+  <section class="grid gap-6">
+    <header class="surface glow-card rounded-[2rem] p-8 sm:p-10 lg:p-12">
+      <div class="max-w-3xl space-y-5">
+        <span class="pill">{t('navAbout')}</span>
+        <h1 class="text-5xl leading-[0.95] sm:text-6xl">A tiny bio with a strong front-end bias.</h1>
+        <p class="max-w-2xl text-lg leading-8 text-[color:var(--text-muted)]">{t('aboutIntro')}</p>
+      </div>
+    </header>
+
+    <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <article class="surface rounded-[1.75rem] p-7 sm:p-8">
+        <h2 class="text-3xl">Skills</h2>
+        <ul class="mt-5 grid gap-3 text-sm leading-7 text-[color:var(--text-muted)] sm:grid-cols-2">
+          <li>Astro, MDX, i18n routing, and static-first architecture</li>
+          <li>React islands with strong separation of concerns</li>
+          <li>Design systems, UI polish, and expressive layout work</li>
+          <li>TypeScript strict mode, content collections, and CI hygiene</li>
+        </ul>
+      </article>
+
+      <article class="surface rounded-[1.75rem] p-7 sm:p-8">
+        <h2 class="text-3xl">Links</h2>
+        <div class="mt-5 grid gap-4">
+          <a
+            href="https://github.com/Morialkar"
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-[1.25rem] border border-[color:var(--border)] bg-white px-4 py-3 font-semibold transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+          >
+            GitHub
+          </a>
+          <a
+            href="#"
+            class="rounded-[1.25rem] border border-[color:var(--border)] bg-white px-4 py-3 font-semibold transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+          >
+            LinkedIn — TODO: replace with the real profile
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <a
+      href={getRelativeLocaleUrl(lang, 'blog')}
+      class="surface glow-card flex items-center justify-between rounded-[1.5rem] px-6 py-5 font-semibold text-[color:var(--text)] transition hover:-translate-y-0.5 hover:text-[color:var(--accent)]"
+    >
+      <span>{t('backToBlog')}</span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </section>
+</SiteLayout>
