@@ -11,6 +11,7 @@ export type RecentPost = {
   title: string;
   dateLabel: string;
   category: string;
+  heroImage?: string;
 };
 
 type Props = {
@@ -112,12 +113,17 @@ export default function MobileMenu({
               <div className="grid gap-3">
                 {recentPosts.map((post) => (
                   <a
+                    key={post.href}
                     href={post.href}
                     onClick={() => setOpen(false)}
                     className="flex items-center gap-4 rounded-[1.25rem] border border-white/10 bg-white/8 p-3 transition hover:bg-white/12"
                   >
                     <div className="h-16 w-16 overflow-hidden rounded-xl bg-[#FFD6EC]">
-                      <div className="h-full w-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.8),transparent_25%),linear-gradient(135deg,rgba(255,61,165,0.45),rgba(122,15,91,0.9))]" />
+                      {post.heroImage ? (
+                        <img src={post.heroImage} alt="" className="h-full w-full object-cover" loading="lazy" />
+                      ) : (
+                        <div className="h-full w-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.8),transparent_25%),linear-gradient(135deg,rgba(255,61,165,0.45),rgba(122,15,91,0.9))]" />
+                      )}
                     </div>
                     <div className="min-w-0">
                       <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#FFD6EC]">{post.category}</p>
