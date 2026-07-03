@@ -1,0 +1,34 @@
+---
+const links = [
+  {
+    href: 'https://github.com/Morialkar',
+    label: 'GitHub',
+    viewBox: '0 0 24 24',
+    path: 'M12 .5C5.7.5.6 5.8.6 12.4c0 5.3 3.4 9.8 8 11.4.6.1.8-.2.8-.5v-2c-3.2.7-3.8-1.4-3.8-1.4-.5-1.3-1.2-1.6-1.2-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.7-1.4-2.5-.3-5.1-1.3-5.1-5.8 0-1.3.4-2.4 1.1-3.2-.1-.3-.5-1.3.1-2.8 0 0 .9-.3 2.8 1.1.8-.2 1.6-.3 2.4-.3s1.6.1 2.4.3c1.8-1.4 2.8-1.1 2.8-1.1.6 1.5.2 2.5.1 2.8.7.8 1.1 1.9 1.1 3.2 0 4.5-2.6 5.5-5.1 5.8.4.3.8 1 .8 2v3c0 .3.2.6.8.5 4.7-1.6 8-6.1 8-11.4C23.4 5.8 18.3.5 12 .5Z',
+  },
+  {
+    href: '#',
+    label: 'LinkedIn',
+    viewBox: '0 0 24 24',
+    path: 'M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 5 2.12 5 3.5ZM.2 8h4.6v15.5H.2V8Zm7.8 0h4.4v2.1h.1c.6-1 2.2-2.1 4.6-2.1 4.9 0 5.8 3.2 5.8 7.5v8h-4.6v-7.1c0-1.7 0-3.8-2.3-3.8-2.4 0-2.8 1.9-2.8 3.7v7.2H8V8Z',
+  },
+];
+---
+
+<div class="flex items-center gap-3">
+  {
+    links.map((link) => (
+      <a
+        href={link.href}
+        aria-label={link.label}
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:-translate-y-0.5 hover:bg-white/20"
+        target={link.href.startsWith('http') ? '_blank' : undefined}
+        rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+      >
+        <svg viewBox={link.viewBox} class="h-5 w-5 fill-current">
+          <path d={link.path} />
+        </svg>
+      </a>
+    ))
+  }
+</div>

@@ -1,0 +1,39 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { locales, type Locale, useTranslations } from '../../../i18n/ui';
+import { getLocalePostSummaries } from '../../../lib/posts';
+
+export async function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const t = useTranslations(lang);
+const posts = await getLocalePostSummaries(lang);
+const recentPosts = posts.slice(0, 3);
+---
+
+<SiteLayout
+  lang={lang}
+  title={`Naomi · ${t('navBlog')}`}
+  description={t('homeIntro')}
+  pathname={Astro.url.pathname}
+  recentPosts={recentPosts}
+>
+  <section class="grid gap-8">
+    <header class="surface glow-card rounded-[2rem] p-8 sm:p-10 lg:p-12">
+      <div class="max-w-3xl space-y-5">
+        <span class="pill">{t('navBlog')}</span>
+        <h1 class="text-5xl leading-[0.95] sm:text-6xl">{t('blogHeading')}</h1>
+        <p class="max-w-2xl text-lg leading-8 text-[color:var(--text-muted)]">
+          {t('homeIntro')} {t('blogArchiveNote')}
+        </p>
+      </div>
+    </header>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      {posts.map((post) => <PostCard summary={post} />)}
+    </div>
+  </section>
+</SiteLayout>

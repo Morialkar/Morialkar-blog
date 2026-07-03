@@ -1,0 +1,51 @@
+---
+title: "TypeScript: remove impossible states"
+description: "A small pattern worth keeping around: discriminated unions make a React or Astro component much more robust."
+pubDate: 2026-05-22
+updatedDate: 2026-06-05
+heroImage: "/images/posts/type-safe-ts.svg"
+category: "TypeScript"
+tags: ["TypeScript", "React", "State", "DX"]
+draft: false
+---
+
+When an interface can be in several states, the classic trap is to split the logic across independent booleans such as `loading`, `error`, and `success`. That usually creates ambiguous combinations and makes testing harder than it should be.
+
+A discriminated union removes that ambiguity by making each state explicit.
+
+## 1. Define the model
+
+```ts title="src/lib/load-state.ts" {1,3-4}
+export type LoadState<T> =
+  | { status: 'idle' }
+  | { status: 'loading' }
+  | { status: 'success'; data: T }
+  | { status: 'error'; message: string };
+```
+
+The compiler becomes an ally: if I introduce a new state, every `switch` that depends on it has to be updated. No forgotten branches.
+
+## 2. Consume the state unambiguously
+
+```tsx title="src/components/AsyncBadge.tsx" {1,3-4}
+switch (state.status) {
+  case 'loading':
+    return <span>Loading…</span>;
+  case 'error':
+    return <span role="alert">{state.message}</span>;
+  case 'success':
+    return <span>{state.data.title}</span>;
+  default:
+    return null;
+}
+```
+
+This pattern fits Astro React islands beautifully: a tiny interactive component, but with strict business logic that stays easy to audit.
+
+## 3. Let compilation catch regressions
+
+```bash
+npm run lint
+```
+
+The real benefit is that the editor and the CI pipeline see the same truth. If an enum-like state is missing or a branch is not covered, the issue surfaces before deploy time.

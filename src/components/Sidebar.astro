@@ -1,0 +1,120 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Logo from './Logo.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import MobileMenu, { type MenuLink } from './MobileMenu';
+import SocialLinks from './SocialLinks.astro';
+import { navigationSlugs } from '../config/navigation';
+import { normalizeLocalePath } from '../i18n/utils';
+import { type Locale, useTranslations } from '../i18n/ui';
+import type { PostSummary } from '../lib/posts';
+
+const { lang, pathname, recentPosts } = Astro.props as {
+  lang: Locale;
+  pathname: string;
+  recentPosts: PostSummary[];
+};
+
+const t = useTranslations(lang);
+const localizedPath = normalizeLocalePath(pathname);
+
+const navLinks: MenuLink[] = navigationSlugs.map((slug) => {
+  const href = getRelativeLocaleUrl(lang, slug);
+  const active =
+    (slug === '' && localizedPath === '') ||
+    (slug !== '' && (localizedPath === slug || localizedPath.startsWith(`${slug}/`)));
+
+  return {
+    href,
+    label:
+      slug === ''
+        ? t('navHome')
+        : slug === 'blog'
+          ? t('navBlog')
+          : slug === 'projects'
+            ? t('navProjects')
+            : t('navAbout'),
+    active,
+  };
+});
+
+const alternateLang = lang === 'fr' ? 'en' : 'fr';
+const alternateHref = getRelativeLocaleUrl(alternateLang, localizedPath);
+---
+
+<MobileMenu
+  client:load
+  brandName="Naomi"
+  tagline="Front-end craft, bilingual stories, and maximalist magenta energy."
+  links={navLinks}
+  recentPosts={recentPosts}
+  alternateHref={alternateHref}
+  alternateLabel={alternateLang.toUpperCase()}
+  recentPostsLabel={t('recentPosts')}
+  currentLanguageLabel={t('currentLanguage')}
+  switchLanguageLabel={t('switchLanguage')}
+/>
+
+<aside class="bg-sidebar-gradient fixed inset-y-0 left-0 z-40 hidden w-[var(--sidebar-width)] flex-col border-r border-white/10 text-white shadow-[16px_0_50px_rgba(42,10,46,0.25)] lg:flex">
+  <div class="flex h-full flex-col gap-8 overflow-y-auto px-6 py-7">
+    <a href={navLinks[0]?.href ?? '/fr/'} class="flex items-center gap-4">
+      <Logo />
+      <div class="min-w-0">
+        <span class="block text-sm font-semibold uppercase tracking-[0.28em] text-[#FFD6EC]">Naomi</span>
+        <p class="mt-2 text-sm leading-6 text-white/78">Front-end craft, bilingual stories, and maximalist magenta energy.</p>
+      </div>
+    </a>
+
+    <div class="flex items-center justify-between gap-4">
+      <SocialLinks />
+      <LanguageSwitcher lang={lang} pathname={pathname} />
+    </div>
+
+    <nav aria-label="Primary" class="grid gap-2">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'rounded-[1.3rem] px-4 py-3 text-base font-semibold transition',
+            link.active ? 'bg-white text-[color:var(--accent)] shadow-[0_12px_30px_rgba(0,0,0,0.12)]' : 'text-white/92 hover:bg-white/10',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <section class="grid gap-4">
+      <div class="flex items-center justify-between gap-3">
+        <h2 class="text-sm font-bold uppercase tracking-[0.22em] text-[#FFD6EC]">{t('recentPosts')}</h2>
+        <span class="h-px flex-1 bg-white/12"></span>
+      </div>
+      <div class="grid gap-3">
+        {recentPosts.map((post) => (
+          <a
+            href={post.href}
+            class="flex items-center gap-3 rounded-[1.25rem] border border-white/10 bg-white/6 p-3 transition hover:bg-white/10"
+          >
+            <div class="h-14 w-14 overflow-hidden rounded-xl bg-white/10">
+              {post.heroImage ? (
+                <img src={post.heroImage} alt="" class="h-full w-full object-cover" loading="lazy" />
+              ) : (
+                <div class="h-full w-full bg-[linear-gradient(135deg,rgba(255,61,165,0.4),rgba(255,255,255,0.12))]"></div>
+              )}
+            </div>
+            <div class="min-w-0">
+              <p class="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#FFD6EC]">{post.category}</p>
+              <h3 class="truncate text-sm font-semibold text-white">{post.title}</h3>
+              <time class="block text-xs text-white/65">{post.dateLabel}</time>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-auto rounded-[1.5rem] border border-white/10 bg-white/8 p-4 text-sm leading-7 text-white/80">
+      <p class="font-semibold text-white">{t('authorName')}</p>
+      <p class="mt-2">{t('footer')}</p>
+    </div>
+  </div>
+</aside>
