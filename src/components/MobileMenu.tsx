@@ -85,6 +85,7 @@ export default function MobileMenu({
             <nav aria-label="Primary" className="grid gap-3 rounded-[1.5rem] border border-white/10 bg-white/6 p-4">
               {links.map((link) => (
                 <a
+                  key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={`rounded-2xl px-4 py-3 text-base font-semibold transition ${
