@@ -72,7 +72,7 @@ const { Content } = await render(post);
               href={`/${lang}/blog/${getPostSlug(newerPost)}/`}
               class="rounded-full border border-[color:var(--border)] bg-white px-4 py-2 transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
             >
-              ← Newer post
+              ← {t('newerPost')}
             </a>
           )}
           {olderPost && (
@@ -80,7 +80,7 @@ const { Content } = await render(post);
               href={`/${lang}/blog/${getPostSlug(olderPost)}/`}
               class="rounded-full border border-[color:var(--border)] bg-white px-4 py-2 transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
             >
-              Older post →
+              {t('olderPost')} →
             </a>
           )}
         </div>

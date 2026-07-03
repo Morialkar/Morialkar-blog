@@ -13,6 +13,8 @@ type UI = {
   by: string;
   footer: string;
   backToBlog: string;
+  newerPost: string;
+  olderPost: string;
   notFoundTitle: string;
   notFoundText: string;
   homeEyebrow: string;
@@ -37,6 +39,8 @@ export const ui: Record<Locale, UI> = {
     by: 'par',
     footer: 'Conçu avec Astro, MDX et beaucoup de rose.',
     backToBlog: 'Retour au blog',
+    newerPost: 'Article plus récent',
+    olderPost: 'Article plus ancien',
     notFoundTitle: 'Page introuvable',
     notFoundText: 'La page demandée semble avoir disparu dans le brouillard magenta.',
     homeEyebrow: 'Portfolio bilingue FR / EN',
@@ -62,6 +66,8 @@ export const ui: Record<Locale, UI> = {
     by: 'by',
     footer: 'Built with Astro, MDX, and a whole lot of pink energy.',
     backToBlog: 'Back to blog',
+    newerPost: 'Newer post',
+    olderPost: 'Older post',
     notFoundTitle: 'Page not found',
     notFoundText: 'The page you requested seems to have vanished into the magenta haze.',
     homeEyebrow: 'Bilingual FR / EN portfolio',
