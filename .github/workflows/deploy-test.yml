@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - deploy-test
+      - main
 
 jobs:
   test:
@@ -30,6 +31,22 @@ jobs:
             </body>
           </html>
           EOF
+
+      - name: Debug - confirm secrets are present (lengths only, no values)
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          echo "SSH_KEY length:     ${#SSH_KEY}"
+          echo "SSH_HOST length:    ${#SSH_HOST}"
+          echo "SSH_USER length:    ${#SSH_USER}"
+          echo "DEPLOY_PATH length: ${#DEPLOY_PATH}"
+          if [ -z "$SSH_HOST" ]; then
+            echo "::error::Secrets are empty in this run context."
+            exit 1
+          fi
 
       - name: Smoke test SSH + upload test.html (NO --delete)
         uses: easingthemes/ssh-deploy@v5.1.0
