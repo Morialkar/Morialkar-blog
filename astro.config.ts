@@ -18,18 +18,9 @@ export default defineConfig({
     },
   },
   integrations: [
-    expressiveCode({
-      themes: ['github-light', 'dracula'],
-      frames: {
-        showCopyToClipboardButton: true,
-      },
-      styleOverrides: {
-        borderRadius: '1rem',
-        frames: {
-          shadowColor: 'rgba(42, 10, 46, 0.16)',
-        },
-      },
-    }),
+    // Expressive Code options are centralized in ec.config.mjs, which the
+    // integration loads automatically when called with no arguments.
+    expressiveCode(),
     mdx(),
     react(),
     sitemap(),
