@@ -1,0 +1,50 @@
+name: Deploy Test (non-destructive)
+
+# Temporary workflow to validate SSH connectivity and DEPLOY_PATH before the
+# real deploy. Runs NO --delete, so nothing on the server is removed.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - deploy-test
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create test payload
+        run: |
+          mkdir -p _deploytest
+          cat > _deploytest/test.html <<EOF
+          <!doctype html>
+          <html lang="en">
+            <head><meta charset="utf-8"><title>Deploy test OK</title></head>
+            <body>
+              <h1>Deploy test OK ✅</h1>
+              <p>Uploaded by GitHub Actions.</p>
+              <p>Commit: ${{ github.sha }}</p>
+              <p>Run: ${{ github.run_id }}</p>
+            </body>
+          </html>
+          EOF
+
+      - name: Smoke test SSH + upload test.html (NO --delete)
+        uses: easingthemes/ssh-deploy@v5.1.0
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          ARGS: '-rlgoDzvc -i'
+          SOURCE: '_deploytest/'
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USER }}
+          TARGET: ${{ secrets.DEPLOY_PATH }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          SCRIPT_BEFORE: |
+            echo "=== whoami ===" && whoami
+            echo "=== home ===" && pwd
+            echo "=== target listing BEFORE ===" && ls -la "${{ secrets.DEPLOY_PATH }}" || echo "target dir not found or empty"
+          SCRIPT_AFTER: |
+            echo "=== target listing AFTER ===" && ls -la "${{ secrets.DEPLOY_PATH }}"
+            echo "=== test.html on server ===" && cat "${{ secrets.DEPLOY_PATH }}/test.html" | head -20
