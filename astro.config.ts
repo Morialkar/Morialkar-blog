@@ -7,14 +7,14 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
-  // TODO: replace with the final production domain before launch.
-  site: 'https://blog.morialkar.com',
+  site: 'https://morialkar.com',
   trailingSlash: 'always',
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],
     routing: {
       prefixDefaultLocale: true,
+      redirectToDefaultLocale: false,
     },
   },
   integrations: [
