@@ -26,7 +26,7 @@ const { lang, title, description, pathname, recentPosts } = Astro.props as Props
 const t = useTranslations(lang);
 const pathWithoutLocale = normalizeLocalePath(pathname);
 const currentPath = pathWithoutLocale ? pathWithoutLocale : '';
-const site = Astro.site ?? new URL('https://blog.morialkar.com');
+const site = Astro.site ?? new URL('https://morialkar.com');
 const canonicalPath = new URL(getRelativeLocaleUrl(lang, currentPath), site).href;
 const alternates = locales.map((locale) => ({
   locale,

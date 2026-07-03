@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 export async function GET({ params, site }: { params: { lang: string }; site?: URL }) {
   const lang = params.lang as Locale;
   const posts = await getCollection('blog', ({ id, data }) => !data.draft && id.startsWith(`${lang}/`));
-  const siteUrl = site ?? new URL('https://blog.morialkar.com');
+  const siteUrl = site ?? new URL('https://morialkar.com');
 
   return rss({
     title: lang === 'fr' ? 'Naomi · Blog FR' : 'Naomi · Blog EN',
