@@ -35,19 +35,34 @@ const recentPosts = (await getLocalePostSummaries(lang)).slice(0, 3);
         status={t('projectPlaceholder1Status')}
         title={t('projectPlaceholder1Title')}
         description={t('projectPlaceholder1Description')}
-        tags={["Astro", "Commerce", "Design system"]}
+        tags={[
+          t('projectPlaceholder1Tag1'),
+          t('projectPlaceholder1Tag2'),
+          t('projectPlaceholder1Tag3'),
+        ]}
+        linkLabel={t('viewProject')}
       />
       <ProjectCard
         status={t('projectPlaceholder2Status')}
         title={t('projectPlaceholder2Title')}
         description={t('projectPlaceholder2Description')}
-        tags={["MDX", "Content", "Accessibility"]}
+        tags={[
+          t('projectPlaceholder2Tag1'),
+          t('projectPlaceholder2Tag2'),
+          t('projectPlaceholder2Tag3'),
+        ]}
+        linkLabel={t('viewProject')}
       />
       <ProjectCard
         status={t('projectPlaceholder3Status')}
         title={t('projectPlaceholder3Title')}
         description={t('projectPlaceholder3Description')}
-        tags={["TODO", "Case study", "Bilingual"]}
+        tags={[
+          t('projectPlaceholder3Tag1'),
+          t('projectPlaceholder3Tag2'),
+          t('projectPlaceholder3Tag3'),
+        ]}
+        linkLabel={t('viewProject')}
       />
     </div>
 

@@ -22,6 +22,7 @@ type UI = {
   homeHeadingBefore: string;
   homeHeadingHighlight: string;
   homeHeadingAfter: string;
+  homeHeroCaption: string;
   homeRecentHeading: string;
   blogHeading: string;
   blogArchiveNote: string;
@@ -38,16 +39,32 @@ type UI = {
   projectPlaceholder1Status: string;
   projectPlaceholder1Title: string;
   projectPlaceholder1Description: string;
+  projectPlaceholder1Tag1: string;
+  projectPlaceholder1Tag2: string;
+  projectPlaceholder1Tag3: string;
   projectPlaceholder2Status: string;
   projectPlaceholder2Title: string;
   projectPlaceholder2Description: string;
+  projectPlaceholder2Tag1: string;
+  projectPlaceholder2Tag2: string;
+  projectPlaceholder2Tag3: string;
   projectPlaceholder3Status: string;
   projectPlaceholder3Title: string;
   projectPlaceholder3Description: string;
+  projectPlaceholder3Tag1: string;
+  projectPlaceholder3Tag2: string;
+  projectPlaceholder3Tag3: string;
   rssLabel: string;
   switchLanguage: string;
   currentLanguage: string;
   authorName: string;
+  tagline: string;
+  primaryNavigation: string;
+  switchToEnglish: string;
+  switchToFrench: string;
+  openMenu: string;
+  closeMenu: string;
+  viewProject: string;
 };
 
 export const ui: Record<Locale, UI> = {
@@ -57,7 +74,7 @@ export const ui: Record<Locale, UI> = {
     navProjects: 'Projets',
     navAbout: 'À propos',
     recentPosts: 'Articles récents',
-    readMore: 'Lire la suite',
+    readMore: 'Voir tous les articles',
     postedOn: 'Publié le',
     by: 'par',
     footer: 'Conçu avec Astro, MDX et beaucoup de rose.',
@@ -65,45 +82,67 @@ export const ui: Record<Locale, UI> = {
     newerPost: 'Article plus récent',
     olderPost: 'Article plus ancien',
     notFoundTitle: 'Page introuvable',
-    notFoundText: 'La page demandée semble avoir disparu dans le brouillard magenta.',
-    homeEyebrow: 'Portfolio bilingue FR / EN',
+    notFoundText:
+      'La page demandée semble avoir disparu dans le brouillard magenta.',
+    homeEyebrow: 'Développeuse full-stack · FR / EN',
     homeIntro:
-      'Un blog technique statique et un portfolio pensé comme une carte de visite vivante : rapide, accessible et volontairement expressif.',
-    projectsIntro:
-      'Quelques idées de projets pour montrer la direction visuelle et la qualité d’exécution du site.',
-    aboutIntro:
-      'Une courte bio placeholder pour Naomi, orientée front-end, design systems et produits statiques à forte personnalité.',
-    homeHeadingBefore: 'Naomi construit des expériences front-end',
-    homeHeadingHighlight: 'bilingues',
-    homeHeadingAfter: 'avec du caractère.',
-    homeRecentHeading: 'Des articles nets, une exécution soignée.',
-    blogHeading: 'Notes techniques, études de cas et opinions au build.',
+      "Développeuse full-stack senior. Je conçois des méthodologies et de l'outillage pour développer avec l'IA sans sacrifier la rigueur : les specs d'abord, des tests partout, et chaque décision prise par un humain.",
+    homeHeadingBefore: "L'IA écrit la majorité du code.",
+    homeHeadingHighlight: 'Naomi',
+    homeHeadingAfter: 'prend chaque décision.',
+    homeHeroCaption: "Architecte d'abord, tests rigoureux partout.",
+    homeRecentHeading: 'Notes de terrain du développement assisté par IA.',
+    blogHeading: 'Notes techniques, études de cas et opinions assumées.',
     blogArchiveNote:
-      'L’archive ci-dessous est triée du plus récent au plus ancien pour garder les meilleurs travaux visibles.',
-    projectsHeading: 'Concepts sélectionnés et placeholders prêts pour un client.',
-    aboutHeading: 'Une petite bio avec un fort penchant front-end.',
+      'Les archives vont du plus récent au plus ancien, pour garder le meilleur bien en vue.',
+    projectsIntro:
+      'De vrais outils, publics et documentés : une méthodologie, son implémentation de référence, et du code de production.',
+    projectsHeading: 'Des outils construits en public, méthodologie incluse.',
+    aboutIntro:
+      "Développeuse full-stack depuis plus de 15 ans, créatrice de la méthodologie AFTER et de YVCDB. J'aime les systèmes exigeants : la conformité d'entreprise, le multi-tenant, et maintenant l'encadrement rigoureux du code généré par IA.",
+    aboutHeading:
+      'Une courte bio, avec une opinion tranchée sur qui prend les décisions.',
     aboutSkills: 'Compétences',
     aboutLinks: 'Liens',
-    aboutSkill1: 'Astro, MDX, routing i18n et architecture statique d’abord',
-    aboutSkill2: 'React islands avec une forte séparation des responsabilités',
-    aboutSkill3: 'Design systems, finitions UI et mises en page expressives',
-    aboutSkill4: 'TypeScript strict, content collections et hygiène CI',
-    projectPlaceholder1Status: 'Concept UI',
-    projectPlaceholder1Title: 'Magenta Commerce',
+    aboutSkill1:
+      'Développement assisté par IA avec de vrais garde-fous : méthodologie AFTER, workflows spec-first, revue adversariale',
+    aboutSkill2:
+      'TypeScript full-stack : React, Node, Fastify, typé de bout en bout',
+    aboutSkill3: 'Outillage CLI et systèmes en Go, avec un faible pour Rust',
+    aboutSkill4:
+      "Backends d'entreprise : permissions multi-tenant, conformité SOC 2 et DCAM, MongoDB et Postgres",
+    projectPlaceholder1Status: 'CLI open source',
+    projectPlaceholder1Title: 'YVCDB',
     projectPlaceholder1Description:
-      'Un concept de boutique marketing percutant avec une narration éditoriale, des CTA très contrastés et une grille produits compatible statique.',
-    projectPlaceholder2Status: 'Portfolio',
-    projectPlaceholder2Title: 'Notes créatives',
+      "Un CLI en Go qui orchestre des agents IA (Claude Code, Codex, OpenCode) à travers des workflows AFTER complets : des phases spécialisées, des portes d'approbation humaine impossibles à sauter, et une isolation Git par phase.",
+    projectPlaceholder1Tag1: 'Go',
+    projectPlaceholder1Tag2: 'TUI',
+    projectPlaceholder1Tag3: 'Agents IA',
+    projectPlaceholder2Status: 'Méthodologie',
+    projectPlaceholder2Title: 'AFTER',
     projectPlaceholder2Description:
-      'Une coquille de portfolio orientée contenu qui mêle études de cas, écriture et une identité visuelle forte dans un seul build statique.',
-    projectPlaceholder3Status: 'TODO',
-    projectPlaceholder3Title: 'Collaboration future',
+      "Architect First, Test Everything Rigorously : une méthodologie pour le développement assisté par IA, publiée comme spécification avec un fichier protocole à déposer dans n'importe quel projet.",
+    projectPlaceholder2Tag1: 'Méthodologie',
+    projectPlaceholder2Tag2: 'Protocole',
+    projectPlaceholder2Tag3: 'Agents IA',
+    projectPlaceholder3Status: 'Full-stack',
+    projectPlaceholder3Title: 'Quiz Builder',
     projectPlaceholder3Description:
-      'Emplacement placeholder pour le prochain vrai client ou projet personnel. Remplace cette carte une fois qu’une étude de cas est prête.',
+      'Une SPA de niveau production construite avec la méthodologie AFTER : monorepo Turborepo, Fastify typé, TanStack Router, et le triplet de tests par unité de logique.',
+    projectPlaceholder3Tag1: 'TypeScript',
+    projectPlaceholder3Tag2: 'React',
+    projectPlaceholder3Tag3: 'Fastify',
     rssLabel: 'Flux RSS',
     switchLanguage: 'Changer de langue',
     currentLanguage: 'Langue actuelle',
     authorName: 'Naomi',
+    tagline: "Développement full-stack, et de l'IA avec de vrais garde-fous.",
+    primaryNavigation: 'Navigation principale',
+    switchToEnglish: "Passer à l'anglais",
+    switchToFrench: 'Passer au français',
+    openMenu: 'Ouvrir le menu',
+    closeMenu: 'Fermer le menu',
+    viewProject: 'Voir le projet',
   },
   en: {
     navHome: 'Home',
@@ -111,7 +150,7 @@ export const ui: Record<Locale, UI> = {
     navProjects: 'Projects',
     navAbout: 'About',
     recentPosts: 'Recent posts',
-    readMore: 'Read more',
+    readMore: 'See all posts',
     postedOn: 'Posted on',
     by: 'by',
     footer: 'Built with Astro, MDX, and a whole lot of pink energy.',
@@ -119,45 +158,67 @@ export const ui: Record<Locale, UI> = {
     newerPost: 'Newer post',
     olderPost: 'Older post',
     notFoundTitle: 'Page not found',
-    notFoundText: 'The page you requested seems to have vanished into the magenta haze.',
-    homeEyebrow: 'Bilingual FR / EN portfolio',
+    notFoundText:
+      'The page you requested seems to have vanished into the magenta haze.',
+    homeEyebrow: 'Full-stack developer · FR / EN',
     homeIntro:
-      'A static technical blog and portfolio treated like a living business card: fast, accessible, and intentionally expressive.',
-    projectsIntro:
-      'A few placeholder projects that showcase the visual direction and execution quality of the site.',
-    aboutIntro:
-      'A short placeholder bio for Naomi, focused on front-end craft, design systems, and static products with strong personality.',
-    homeHeadingBefore: 'Naomi builds',
-    homeHeadingHighlight: 'bilingual',
-    homeHeadingAfter: 'front-end experiences with personality.',
-    homeRecentHeading: 'Sharp articles, clean delivery.',
+      "Senior full-stack developer. I build methodologies and tooling for AI-assisted development that doesn't sacrifice rigor: specs first, tests everywhere, every decision made by a human.",
+    homeHeadingBefore: 'The AI writes most of the code.',
+    homeHeadingHighlight: 'Naomi',
+    homeHeadingAfter: 'makes every decision.',
+    homeHeroCaption: 'Architect first, test everything rigorously.',
+    homeRecentHeading: 'Field notes from AI-assisted development.',
     blogHeading: 'Technical notes, case studies, and build-time opinions.',
     blogArchiveNote:
       'The archive below is sorted from newest to oldest so the strongest work stays visible.',
-    projectsHeading: 'Selected concepts and client-ready placeholders.',
-    aboutHeading: 'A tiny bio with a strong front-end bias.',
+    projectsIntro:
+      'Real tools, public and documented: a methodology, its reference implementation, and production code.',
+    projectsHeading: 'Tools built in public, methodology included.',
+    aboutIntro:
+      'Full-stack developer for 15+ years, creator of the AFTER methodology and YVCDB. I like demanding systems: enterprise compliance, multi-tenancy, and now putting real guardrails around AI-generated code.',
+    aboutHeading:
+      'A short bio with a strong opinion about who makes the decisions.',
     aboutSkills: 'Skills',
     aboutLinks: 'Links',
-    aboutSkill1: 'Astro, MDX, i18n routing, and static-first architecture',
-    aboutSkill2: 'React islands with strong separation of concerns',
-    aboutSkill3: 'Design systems, UI polish, and expressive layout work',
-    aboutSkill4: 'TypeScript strict mode, content collections, and CI hygiene',
-    projectPlaceholder1Status: 'UI concept',
-    projectPlaceholder1Title: 'Magenta Commerce',
+    aboutSkill1:
+      'AI-assisted development with real guardrails: AFTER methodology, spec-first workflows, adversarial review',
+    aboutSkill2:
+      'Full-stack TypeScript: React, Node, Fastify, typed end to end',
+    aboutSkill3: 'CLI and systems tooling in Go, with a soft spot for Rust',
+    aboutSkill4:
+      'Enterprise backends: multi-tenant permissions, SOC 2 and DCAM compliance, MongoDB and Postgres',
+    projectPlaceholder1Status: 'Open source CLI',
+    projectPlaceholder1Title: 'YVCDB',
     projectPlaceholder1Description:
-      'A punchy marketing storefront concept with editorial storytelling, high-contrast CTAs, and a static-friendly product grid.',
-    projectPlaceholder2Status: 'Portfolio',
-    projectPlaceholder2Title: 'Creative notes',
+      "A Go CLI that drives AI agents (Claude Code, Codex, OpenCode) through complete AFTER workflows: specialized phases, human approval gates you can't skip, and per-phase Git isolation.",
+    projectPlaceholder1Tag1: 'Go',
+    projectPlaceholder1Tag2: 'TUI',
+    projectPlaceholder1Tag3: 'AI agents',
+    projectPlaceholder2Status: 'Methodology',
+    projectPlaceholder2Title: 'AFTER',
     projectPlaceholder2Description:
-      'A content-driven portfolio shell that blends case studies, writing, and a strong visual identity in one static build.',
-    projectPlaceholder3Status: 'TODO',
-    projectPlaceholder3Title: 'Future collaboration',
+      'Architect First, Test Everything Rigorously: a methodology for AI-assisted development, published as a specification with a drop-in protocol file for any project.',
+    projectPlaceholder2Tag1: 'Methodology',
+    projectPlaceholder2Tag2: 'Protocol',
+    projectPlaceholder2Tag3: 'AI agents',
+    projectPlaceholder3Status: 'Full-stack',
+    projectPlaceholder3Title: 'Quiz Builder',
     projectPlaceholder3Description:
-      'Placeholder slot for the next real client or personal project. Replace this card once a case study is ready.',
+      'A production-grade SPA built with the AFTER methodology: Turborepo monorepo, typed Fastify, TanStack Router, and the test triplet on every unit of logic.',
+    projectPlaceholder3Tag1: 'TypeScript',
+    projectPlaceholder3Tag2: 'React',
+    projectPlaceholder3Tag3: 'Fastify',
     rssLabel: 'RSS feed',
     switchLanguage: 'Switch language',
     currentLanguage: 'Current language',
     authorName: 'Naomi',
+    tagline: 'Full-stack development, and AI with real guardrails.',
+    primaryNavigation: 'Primary navigation',
+    switchToEnglish: 'Switch to English',
+    switchToFrench: 'Switch to French',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    viewProject: 'View project',
   },
 };
 

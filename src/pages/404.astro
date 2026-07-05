@@ -10,7 +10,7 @@ import { ui } from '../i18n/ui';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{ui.fr.notFoundTitle}</title>
+    <title>{ui.fr.notFoundTitle} · {ui.en.notFoundTitle}</title>
     <style>
       :root {
         color-scheme: light;
@@ -21,10 +21,14 @@ import { ui } from '../i18n/ui';
         display: grid;
         place-items: center;
         background:
-          radial-gradient(circle at top left, rgba(255, 61, 165, 0.22), transparent 25%),
+          radial-gradient(
+            circle at top left,
+            rgba(255, 61, 165, 0.22),
+            transparent 25%
+          ),
           linear-gradient(180deg, #fff0f7 0%, #ffd6ec 100%);
         color: #2a0a2e;
-        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       }
       main {
         width: min(92vw, 40rem);
@@ -34,11 +38,17 @@ import { ui } from '../i18n/ui';
         border: 1px solid rgba(42, 10, 46, 0.12);
         box-shadow: 0 24px 60px rgba(42, 10, 46, 0.12);
       }
-      h1 {
+      h1,
+      h2 {
         margin: 0;
-        font-family: "Fraunces", Georgia, serif;
+        font-family: 'Fraunces', Georgia, serif;
         font-size: clamp(2.5rem, 8vw, 5rem);
         line-height: 0.95;
+      }
+      .translation-block + .translation-block {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(42, 10, 46, 0.12);
       }
       p {
         color: #6f4a71;
@@ -75,8 +85,14 @@ import { ui } from '../i18n/ui';
   <body>
     <main>
       <span class="pill">404</span>
-      <h1>{ui.fr.notFoundTitle}</h1>
-      <p>{ui.fr.notFoundText}</p>
+      <section class="translation-block" lang="fr">
+        <h1>{ui.fr.notFoundTitle}</h1>
+        <p>{ui.fr.notFoundText}</p>
+      </section>
+      <section class="translation-block" lang="en">
+        <h2>{ui.en.notFoundTitle}</h2>
+        <p>{ui.en.notFoundText}</p>
+      </section>
       <div class="actions">
         <a class="button primary" href="/fr/">Accueil</a>
         <a class="button secondary" href="/en/">Home</a>
