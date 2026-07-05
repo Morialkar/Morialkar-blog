@@ -16,8 +16,8 @@ export async function GET({ params, site }: { params: { lang: string }; site?: U
     title: lang === 'fr' ? 'Naomi · Blog FR' : 'Naomi · Blog EN',
     description:
       lang === 'fr'
-        ? 'Articles techniques bilingues et notes de front-end.'
-        : 'Bilingual technical articles and front-end notes.',
+        ? 'Notes techniques bilingues sur le développement assisté par IA et le développement full-stack.'
+        : 'Bilingual technical notes on AI-assisted development and full-stack work.',
     site: siteUrl,
     items: posts.map((post) => ({
       title: post.data.title,
