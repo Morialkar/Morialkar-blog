@@ -16,7 +16,7 @@ const recentPosts = (await getLocalePostSummaries(lang)).slice(0, 3);
 
 <SiteLayout
   lang={lang}
-  title={`Naomi · ${t('homeEyebrow')}`}
+  title={`${t('authorName')} · ${t('homeEyebrow')}`}
   description={t('homeIntro')}
   pathname={Astro.url.pathname}
   recentPosts={recentPosts}

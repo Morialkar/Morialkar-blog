@@ -43,7 +43,7 @@ const { Content } = await render(post);
 
 <SiteLayout
   lang={lang}
-  title={`${post.data.title} · Naomi`}
+  title={`${post.data.title} · ${t('authorName')}`}
   description={post.data.description}
   pathname={Astro.url.pathname}
   recentPosts={summaries.slice(0, 3)}

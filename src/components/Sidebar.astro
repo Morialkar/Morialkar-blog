@@ -45,7 +45,7 @@ const alternateHref = getRelativeLocaleUrl(alternateLang, localizedPath);
 
 <MobileMenu
   client:load
-  brandName="Naomi"
+  brandName={t('authorName')}
   tagline={t('tagline')}
   links={navLinks}
   recentPosts={recentPosts}
@@ -68,7 +68,7 @@ const alternateHref = getRelativeLocaleUrl(alternateLang, localizedPath);
       <div class="min-w-0">
         <span
           class="block text-sm font-semibold tracking-[0.28em] text-[#FFD6EC] uppercase"
-          >Naomi</span
+          >{t('authorName')}</span
         >
         <p class="mt-2 text-sm leading-6 text-white/78">{t('tagline')}</p>
       </div>
@@ -111,9 +111,9 @@ const alternateHref = getRelativeLocaleUrl(alternateLang, localizedPath);
           recentPosts.map((post) => (
             <a
               href={post.href}
-              class="flex items-center gap-3 rounded-[1.25rem] border border-white/10 bg-white/6 p-3 transition hover:bg-white/10"
+              class="flex min-w-0 items-center gap-3 rounded-[1.25rem] border border-white/10 bg-white/6 p-3 transition hover:bg-white/10"
             >
-              <div class="h-14 w-14 overflow-hidden rounded-xl bg-white/10">
+              <div class="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-white/10">
                 {post.heroImage ? (
                   <img
                     src={post.heroImage}
@@ -125,11 +125,11 @@ const alternateHref = getRelativeLocaleUrl(alternateLang, localizedPath);
                   <div class="h-full w-full bg-[linear-gradient(135deg,rgba(255,61,165,0.4),rgba(255,255,255,0.12))]" />
                 )}
               </div>
-              <div class="min-w-0">
+              <div class="min-w-0 flex-1">
                 <p class="text-[0.65rem] font-bold tracking-[0.2em] text-[#FFD6EC] uppercase">
                   {post.category}
                 </p>
-                <h3 class="truncate text-sm font-semibold text-white">
+                <h3 class="text-sm font-semibold break-words text-white">
                   {post.title}
                 </h3>
                 <time class="block text-xs text-white/65">

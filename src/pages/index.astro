@@ -1,4 +1,6 @@
 ---
+import { ui } from '../i18n/ui';
+
 const fallback = '/fr/';
 ---
 
@@ -36,9 +38,9 @@ const fallback = '/fr/';
   <body>
     <main>
       <p>
-        <span lang="fr">Redirection vers <a href={fallback}>/fr/</a>…</span>
+        <span lang="fr">{ui.fr.redirectingTo} <a href={fallback}>/fr/</a>…</span>
         /
-        <span lang="en">Redirecting to <a href={fallback}>/fr/</a>…</span>
+        <span lang="en">{ui.en.redirectingTo} <a href={fallback}>/fr/</a>…</span>
       </p>
     </main>
   </body>

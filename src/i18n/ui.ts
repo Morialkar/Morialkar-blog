@@ -55,6 +55,9 @@ type UI = {
   projectPlaceholder3Tag2: string;
   projectPlaceholder3Tag3: string;
   rssLabel: string;
+  rssTitle: string;
+  rssDescription: string;
+  redirectingTo: string;
   switchLanguage: string;
   currentLanguage: string;
   authorName: string;
@@ -133,6 +136,10 @@ export const ui: Record<Locale, UI> = {
     projectPlaceholder3Tag2: 'React',
     projectPlaceholder3Tag3: 'Fastify',
     rssLabel: 'Flux RSS',
+    rssTitle: 'Naomi · Blog FR',
+    rssDescription:
+      'Notes techniques bilingues sur le développement assisté par IA et le développement full-stack.',
+    redirectingTo: 'Redirection vers',
     switchLanguage: 'Changer de langue',
     currentLanguage: 'Langue actuelle',
     authorName: 'Naomi',
@@ -209,6 +216,10 @@ export const ui: Record<Locale, UI> = {
     projectPlaceholder3Tag2: 'React',
     projectPlaceholder3Tag3: 'Fastify',
     rssLabel: 'RSS feed',
+    rssTitle: 'Naomi · Blog EN',
+    rssDescription:
+      'Bilingual technical notes on AI-assisted development and full-stack work.',
+    redirectingTo: 'Redirecting to',
     switchLanguage: 'Switch language',
     currentLanguage: 'Current language',
     authorName: 'Naomi',
