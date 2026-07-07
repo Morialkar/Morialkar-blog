@@ -78,7 +78,7 @@ export default function MobileMenu({
             className="flex items-center gap-3"
           >
             <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-xl font-black tracking-tight">
-              N
+              {brandName.charAt(0)}
             </span>
             <span>
               <span className="block text-sm font-semibold tracking-[0.22em] text-[#FFD6EC] uppercase">
@@ -146,20 +146,20 @@ export default function MobileMenu({
                     key={post.href}
                     href={post.href}
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-4 rounded-[1.25rem] border border-white/10 bg-white/8 p-3 transition hover:bg-white/12"
+                    className="flex min-w-0 items-center gap-4 rounded-[1.25rem] border border-white/10 bg-white/8 p-3 transition hover:bg-white/12"
                   >
-                    <div className="h-16 w-16 overflow-hidden rounded-xl bg-[#FFD6EC]">
+                    <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-[#FFD6EC]">
                       {post.heroImage ? (
                         <img src={post.heroImage} alt="" className="h-full w-full object-cover" loading="lazy" />
                       ) : (
                         <div className="h-full w-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.8),transparent_25%),linear-gradient(135deg,rgba(255,61,165,0.45),rgba(122,15,91,0.9))]" />
                       )}
                     </div>
-                    <div className="min-w-0">
+                    <div className="min-w-0 flex-1">
                       <p className="text-xs font-bold tracking-[0.18em] text-[#FFD6EC] uppercase">
                         {post.category}
                       </p>
-                      <h3 className="truncate text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold break-words text-white">
                         {post.title}
                       </h3>
                       <p className="text-sm text-white/70">{post.dateLabel}</p>

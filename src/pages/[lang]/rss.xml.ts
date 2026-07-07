@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import { locales, type Locale } from '../../i18n/ui';
+import { locales, ui, type Locale } from '../../i18n/ui';
 import { formatDate, getPostLocale, getPostSlug } from '../../lib/posts';
 
 export async function getStaticPaths() {
@@ -13,11 +13,8 @@ export async function GET({ params, site }: { params: { lang: string }; site?: U
   const siteUrl = site ?? new URL('https://morialkar.com');
 
   return rss({
-    title: lang === 'fr' ? 'Naomi · Blog FR' : 'Naomi · Blog EN',
-    description:
-      lang === 'fr'
-        ? 'Notes techniques bilingues sur le développement assisté par IA et le développement full-stack.'
-        : 'Bilingual technical notes on AI-assisted development and full-stack work.',
+    title: ui[lang].rssTitle,
+    description: ui[lang].rssDescription,
     site: siteUrl,
     items: posts.map((post) => ({
       title: post.data.title,
