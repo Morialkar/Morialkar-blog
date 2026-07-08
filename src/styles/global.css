@@ -52,12 +52,14 @@ body::before {
   background: var(--accent);
 }
 
-a {
-  color: var(--accent);
-}
+@layer base {
+  a {
+    color: var(--accent);
+  }
 
-a:hover {
-  color: var(--accent-bright);
+  a:hover {
+    color: var(--accent-bright);
+  }
 }
 
 h1,
