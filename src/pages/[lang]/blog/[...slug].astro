@@ -48,8 +48,8 @@ const { Content } = await render(post);
   pathname={Astro.url.pathname}
   recentPosts={summaries.slice(0, 3)}
 >
-  <article class="grid gap-8">
-    <header class="surface glow-card overflow-hidden rounded-[2rem]">
+  <article class="grid min-w-0 gap-8">
+    <header class="surface glow-card min-w-0 overflow-hidden rounded-[2rem]">
       {
         post.data.heroImage && (
           <img
@@ -78,12 +78,12 @@ const { Content } = await render(post);
     </header>
 
     <article
-      class="content-body surface rounded-[2rem] px-8 py-10 sm:px-10 lg:px-12"
+      class="content-body surface min-w-0 max-w-full rounded-[2rem] px-8 py-10 sm:px-10 lg:px-12"
     >
       <Content />
     </article>
 
-    <footer class="surface glow-card rounded-[2rem] p-6 sm:p-8">
+    <footer class="surface glow-card min-w-0 rounded-[2rem] p-6 sm:p-8">
       <div
         class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
       >
