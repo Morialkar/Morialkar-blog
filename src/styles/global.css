@@ -117,6 +117,18 @@ samp {
   gap: 1.5rem;
 }
 
+.content-body {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.content-body > .expressive-code,
+.content-body .expressive-code .frame,
+.content-body .expressive-code pre {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .content-body > :where(p, ul, ol, blockquote, figure, pre, table) {
   margin-block: 1.4rem;
 }
