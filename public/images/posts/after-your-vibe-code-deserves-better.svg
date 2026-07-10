@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Abstract pink illustration of a phased pipeline with human approval gates">
+  <defs>
+    <linearGradient id="bgAfter" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF7FB" />
+      <stop offset="55%" stop-color="#FFD6EC" />
+      <stop offset="100%" stop-color="#7A0F5B" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgAfter)" />
+  <rect x="84" y="84" width="1032" height="462" rx="42" fill="#fff" opacity="0.85" />
+  <rect x="118" y="118" width="322" height="398" rx="28" fill="#2A0A2E" />
+  <circle cx="279" cy="216" r="64" fill="#E6007E" />
+  <path d="M250 216l20 20 40-44" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <path d="M162 322h234M162 358h176M162 394h206M162 430h146M162 466h190" stroke="#FFD6EC" stroke-opacity=".65" stroke-width="10" stroke-linecap="round" />
+  <path d="M496 232h468" stroke="#2A0A2E" stroke-opacity=".25" stroke-width="8" stroke-linecap="round" />
+  <rect x="496" y="184" width="104" height="96" rx="20" fill="#FFF0F7" />
+  <rect x="652" y="184" width="104" height="96" rx="20" fill="#FFE7F2" />
+  <rect x="808" y="184" width="104" height="96" rx="20" fill="#FFD6EC" />
+  <rect x="964" y="184" width="104" height="96" rx="20" fill="#FF9ED3" />
+  <circle cx="626" cy="232" r="20" fill="#E6007E" />
+  <path d="M618 232l6 6 12-14" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <circle cx="782" cy="232" r="20" fill="#E6007E" />
+  <path d="M774 232l6 6 12-14" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <circle cx="938" cy="232" r="20" fill="#E6007E" />
+  <path d="M930 232l6 6 12-14" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <rect x="496" y="340" width="572" height="176" rx="28" fill="#FFF0F7" />
+  <path d="M540 392h300M540 428h236M540 464h270" stroke="#2A0A2E" stroke-opacity=".45" stroke-width="10" stroke-linecap="round" />
+  <circle cx="1004" cy="392" r="22" fill="#FF3DA5" />
+  <circle cx="1004" cy="464" r="22" fill="#7A0F5B" />
+</svg>
