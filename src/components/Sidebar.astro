@@ -80,13 +80,13 @@ const alternateHref = getRelativeLocaleUrl(alternateLang, localizedPath);
       <LanguageSwitcher lang={lang} pathname={pathname} />
     </div>
 
-    <nav aria-label={t('primaryNavigation')} class="grid gap-2">
+    <nav aria-label={t('primaryNavigation')} class="grid grid-cols-2 gap-2">
       {
         navLinks.map((link) => (
           <a
             href={link.href}
             class:list={[
-              'rounded-[1.3rem] px-4 py-3 text-base font-semibold transition',
+              'rounded-[1.3rem] px-4 py-3 text-center text-base font-semibold transition',
               link.active
                 ? 'bg-white text-[color:var(--accent)] shadow-[0_12px_30px_rgba(0,0,0,0.12)]'
                 : 'text-white/92 hover:bg-white/10',
