@@ -4,6 +4,7 @@ import Logo from './Logo.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import MobileMenu, { type MenuLink } from './MobileMenu';
 import SocialLinks from './SocialLinks.astro';
+import ToptalBadge from './ToptalBadge.astro';
 import { navigationSlugs } from '../config/navigation';
 import { normalizeLocalePath } from '../i18n/utils';
 import { type Locale, useTranslations } from '../i18n/ui';
@@ -142,5 +143,6 @@ const alternateHref = getRelativeLocaleUrl(alternateLang, localizedPath);
       </div>
     </section>
 
+    <ToptalBadge />
   </div>
 </aside>

@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Locale };
 const t = useTranslations(lang);
-const recentPosts = (await getLocalePostSummaries(lang)).slice(0, 3);
+const recentPosts = (await getLocalePostSummaries(lang)).slice(0, 2);
 ---
 
 <SiteLayout

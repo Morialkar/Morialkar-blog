@@ -46,7 +46,7 @@ const { Content } = await render(post);
   title={`${post.data.title} · ${t('authorName')}`}
   description={post.data.description}
   pathname={Astro.url.pathname}
-  recentPosts={summaries.slice(0, 3)}
+  recentPosts={summaries.slice(0, 2)}
 >
   <article class="grid min-w-0 gap-8">
     <header class="surface glow-card min-w-0 overflow-hidden rounded-[2rem]">
